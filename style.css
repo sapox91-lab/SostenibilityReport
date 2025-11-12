@@ -16,6 +16,7 @@
     --color-dark-brown: #6B5333;         /* Marrone scuro per testi */
     --color-light-brown: #A0826D;        /* Marrone chiaro */
     --color-beige-light: #F5F1E8;        /* Beige chiaro per sfondi */
+    --color-cream: #FFF8E7;              /* Crema - nuovo background */
     --color-beige: #EBE4D1;              /* Beige medio */
     --color-green: #6B8E23;              /* Verde oliva per accenti */
     --color-white: #FFFFFF;              /* Bianco puro */
@@ -40,8 +41,58 @@ body {
     font-family: 'Georgia', 'Times New Roman', serif;
     line-height: 1.6;
     color: var(--color-text-dark);
-    background-color: var(--color-beige-light);
+    background-color: var(--color-cream);
     overflow-x: hidden;
+}
+
+/* ========================================
+   SELETTORE LINGUA - Pulsante multilinguaggio
+   ======================================== */
+
+.language-selector {
+    position: fixed;
+    top: var(--spacing-sm);
+    left: var(--spacing-sm);
+    z-index: 2000;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    backdrop-filter: blur(10px);
+}
+
+/* Pulsanti lingua */
+.lang-btn {
+    background: none;
+    border: none;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.3rem 0.6rem;
+    transition: all var(--transition-fast);
+    border-radius: 15px;
+    letter-spacing: 0.5px;
+}
+
+/* Pulsante lingua attivo */
+.lang-btn.active {
+    color: var(--color-primary-brown);
+    background-color: var(--color-beige-light);
+}
+
+/* Hover su pulsanti lingua */
+.lang-btn:hover {
+    color: var(--color-primary-brown);
+}
+
+/* Separatore tra pulsanti */
+.lang-separator {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
 }
 
 /* ========================================
@@ -274,6 +325,19 @@ body {
     border-left: 4px solid var(--color-green);
 }
 
+/* Container per i loghi di certificazione */
+.cert-logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Logo di certificazione (B Corp, SOStain) */
+.cert-logo {
+    max-width: 120px;
+    height: auto;
+}
+
 /* Titolo della sezione informativa */
 .info-title {
     font-size: 1.3rem;
@@ -287,6 +351,29 @@ body {
     font-size: 1rem;
     line-height: 1.7;
     color: var(--color-text-dark);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Lista ordinata SOStain */
+.sostain-list {
+    margin-top: var(--spacing-md);
+    padding-left: var(--spacing-lg);
+    list-style-position: outside;
+}
+
+/* Elementi della lista SOStain */
+.sostain-list li {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-text-dark);
+    margin-bottom: var(--spacing-xs);
+    padding-left: var(--spacing-xs);
+}
+
+/* Numeri della lista in grassetto */
+.sostain-list li::marker {
+    color: var(--color-primary-brown);
+    font-weight: 600;
 }
 
 /* ========================================
@@ -296,18 +383,66 @@ body {
 .footer {
     background-color: var(--color-dark-brown);
     color: var(--color-beige-light);
-    padding: var(--spacing-lg) var(--spacing-sm);
+    padding: var(--spacing-xl) var(--spacing-sm);
     text-align: center;
 }
 
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
 }
 
-.footer-content p {
+/* Container dei link social */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Singolo link social */
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+    color: var(--color-beige-light);
+}
+
+/* Hover sui link social */
+.social-link:hover {
+    background-color: var(--color-primary-brown);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(139, 111, 71, 0.4);
+}
+
+/* Icone social */
+.social-icon {
+    width: 22px;
+    height: 22px;
+}
+
+/* Testo copyright */
+.copyright {
     font-size: 0.9rem;
     letter-spacing: 0.5px;
+    margin: var(--spacing-sm) 0;
+}
+
+/* Testo credits */
+.credits {
+    font-size: 0.85rem;
+    color: var(--color-beige);
+    font-style: italic;
+    letter-spacing: 0.3px;
+    line-height: 1.6;
 }
 
 /* ========================================
@@ -316,6 +451,18 @@ body {
 
 /* Tablet - da 768px in su */
 @media (min-width: 768px) {
+    
+    /* Selettore lingua più grande su tablet */
+    .language-selector {
+        top: var(--spacing-md);
+        left: var(--spacing-md);
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .lang-btn {
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+    }
     
     /* Header più spazioso su tablet */
     .header {
@@ -336,6 +483,22 @@ body {
         font-size: 1.3rem;
         text-align: left;
         max-width: 500px;
+    }
+    
+    /* Logo certificazioni più grande su tablet */
+    .cert-logo {
+        max-width: 150px;
+    }
+    
+    /* Social links più grandi su tablet */
+    .social-link {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .social-icon {
+        width: 24px;
+        height: 24px;
     }
     
     /* Hero più alto su tablet */
@@ -372,6 +535,12 @@ body {
 /* Desktop - da 1024px in su */
 @media (min-width: 1024px) {
     
+    /* Selettore lingua posizionato meglio su desktop */
+    .language-selector {
+        top: var(--spacing-lg);
+        left: var(--spacing-lg);
+    }
+    
     /* Header desktop */
     .header {
         padding: var(--spacing-xl) var(--spacing-lg);
@@ -384,6 +553,11 @@ body {
     .header-title {
         font-size: 1.5rem;
         max-width: 600px;
+    }
+    
+    /* Logo certificazioni ancora più grande su desktop */
+    .cert-logo {
+        max-width: 180px;
     }
     
     /* Hero a schermo intero su desktop */
